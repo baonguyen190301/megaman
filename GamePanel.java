@@ -7,6 +7,8 @@ package UserInterface;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -16,10 +18,10 @@ import javax.swing.JPanel;
  * @author Admin
  */
 
-public class GamePanel extends JPanel implements Runnable {
+public class GamePanel extends JPanel implements Runnable,KeyListener {
     private Thread thread;
     private boolean isRunning;
-
+    
    @Override
     public void paint(Graphics g)
     {
@@ -27,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
         g.fillRect(0,0, GameFrame.SCREEN_WIDTH,GameFrame.SCREEN_HEIGH);
         
     }
+    
     public void startGame()
     {
         if(thread == null)
@@ -47,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
         beginTime = System.nanoTime();
         while(isRunning)
         {
-            System.out.println("a="+(a++));
+            //System.out.println("a="+(a++));
             
             long deltaTime = System.nanoTime() - beginTime;
             sleepTime = period - deltaTime;
@@ -62,6 +65,64 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+//      System.out.println("key press ");
+//      if(e.getKeyCode() == KeyEvent.VK_A){
+//          System.out.println("you press A");
+        switch(e.getKeyCode()){
+          case KeyEvent.VK_UP:
+              System.out.println("you press up");
+              break;
+          case KeyEvent.VK_DOWN:
+              System.out.println("you press down");
+              break;
+          case KeyEvent.VK_RIGHT:
+              System.out.println("you press right");
+              break;
+          case KeyEvent.VK_LEFT:
+              System.out.println("you press left");
+              break;
+          case KeyEvent.VK_ENTER:
+              System.out.println("you press enter");
+              break;
+          case KeyEvent.VK_SPACE:
+              System.out.println("you press space");
+              break;
+      }
+    }
+    
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+//      System.out.println("key releasee");
+    switch(e.getKeyCode()){
+          case KeyEvent.VK_UP:
+              System.out.println("you released up");
+              break;
+          case KeyEvent.VK_DOWN:
+              System.out.println("you released down");
+              break;
+          case KeyEvent.VK_RIGHT:
+              System.out.println("you released right");
+              break;
+          case KeyEvent.VK_LEFT:
+              System.out.println("you released left");
+              break;
+          case KeyEvent.VK_ENTER:
+              System.out.println("you releaesed enter");
+              break;
+          case KeyEvent.VK_SPACE:
+              System.out.println("you released space");
+              break;
+      }
     }
     
 }

@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gamePanel = new GamePanel();
         add(gamePanel);
-        
+        this.addKeyListener(gamePanel);
     }
     public void starGame()
     {
